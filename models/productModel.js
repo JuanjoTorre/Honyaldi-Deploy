@@ -46,11 +46,11 @@
         type: Boolean,
         default: false
     },
-    sin_azucar: {
+    azucar: {
         type: Boolean,
         default: false
     },
-    sin_gluten: {
+    gluten: {
         type: Boolean,
         default: false
     },
@@ -58,7 +58,7 @@
         type: Boolean,
         default: false
     },
-    sin_lactosa:{
+   lactosa:{
         type: Boolean,
         default: false
     },
