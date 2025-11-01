@@ -54,6 +54,14 @@
         type: Boolean,
         default: false
     },
+    vegano:{
+        type: Boolean,
+        default: false
+    },
+    sin_lactosa:{
+        type: Boolean,
+        default: false
+    },
     alimentacion: {
         type: Boolean,
         default: false

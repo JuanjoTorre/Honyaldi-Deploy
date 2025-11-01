@@ -20,7 +20,7 @@ const nuevoProduct = async (req, res) => {
 	let params = req.body;
 	params.imagen = params.codigo + ".jpg";
 	params.pdf = params.codigo + ".pdf";
-	console.log(params.codigo)
+	console.log(params.codigo);
 
 	//Validar los datos
 	try {
@@ -227,7 +227,6 @@ const listarProductosProveedor = async (req, res) => {
 	//Recogemos el proveedor del filtro
 	const prov = req.params.name;
 
-
 	//Hacemos la consulta
 	try {
 		const todosProv = await ProductModel.find({ proveedor: prov })
@@ -333,6 +332,66 @@ const listarProductosRestringido = async (req, res) => {
 
 			//Obtenemos el total de productos
 			let totalGR = await ProductModel.find({ sin_gluten: true });
+
+			if (!todosGR) {
+				return res.status(400).send({
+					status: "error",
+					message: "Error en la consulta",
+				});
+			}
+
+			return res.status(200).send({
+				status: "success",
+				message: `Los productos del grupo restringido  ${gr} son..`,
+				productos: todosGR,
+				totalGR: totalGR.length,
+			});
+		} catch (error) {
+			return res.status(400).send({
+				status: "error",
+				message: "Error general",
+			});
+		}
+	}
+	if (gr == "Vegano") {
+		//Hacemos la consulta
+		try {
+			const todosGR = await ProductModel.find({ vegano: true })
+				.sort("_id")
+				.exec();
+
+			//Obtenemos el total de productos
+			let totalGR = await ProductModel.find({ vegano: true });
+
+			if (!todosGR) {
+				return res.status(400).send({
+					status: "error",
+					message: "Error en la consulta",
+				});
+			}
+
+			return res.status(200).send({
+				status: "success",
+				message: `Los productos del grupo restringido  ${gr} son..`,
+				productos: todosGR,
+				totalGR: totalGR.length,
+			});
+		} catch (error) {
+			return res.status(400).send({
+				status: "error",
+				message: "Error general",
+			});
+		}
+	}
+	if (gr == "Sin_Lactosa") {
+		//Hacemos la consulta
+		try {
+			const todosGR = await ProductModel.find({ sin_lactosa: true })
+				.sort("_id")
+				.exec();
+
+			//Obtenemos el total de productos
+			let totalGR = await ProductModel.find({ sin_lactosa: true });
 
 			if (!todosGR) {
 				return res.status(400).send({
