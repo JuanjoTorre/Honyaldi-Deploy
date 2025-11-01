@@ -262,7 +262,7 @@ const listarProductosProveedor = async (req, res) => {
 const listarProductosRestringido = async (req, res) => {
 	//Recogemos el restringido del filtro
 	let gr = req.params.name;
-
+console.log(gr);
 	if (gr == "Integral") {
 		//Hacemos la consulta
 		try {
@@ -293,15 +293,15 @@ const listarProductosRestringido = async (req, res) => {
 			});
 		}
 	}
-	if (gr == "Sin_Azucar") {
+	if (gr == "Sin Azucar") {
 		//Hacemos la consulta
 		try {
-			const todosGR = await ProductModel.find({ sin_azucar: true })
+			const todosGR = await ProductModel.find({ azucar: true })
 				.sort("_id")
 				.exec();
 
 			//Obtenemos el total de productos
-			let totalGR = await ProductModel.find({ sin_azucar: true });
+			let totalGR = await ProductModel.find({ azucar: true });
 
 			if (!todosGR) {
 				return res.status(400).send({
@@ -323,15 +323,15 @@ const listarProductosRestringido = async (req, res) => {
 			});
 		}
 	}
-	if (gr == "Sin_Gluten") {
+	if (gr == "Sin Gluten") {
 		//Hacemos la consulta
 		try {
-			const todosGR = await ProductModel.find({ sin_gluten: true })
+			const todosGR = await ProductModel.find({ gluten: true })
 				.sort("_id")
 				.exec();
 
 			//Obtenemos el total de productos
-			let totalGR = await ProductModel.find({ sin_gluten: true });
+			let totalGR = await ProductModel.find({ gluten: true });
 
 			if (!todosGR) {
 				return res.status(400).send({
@@ -383,15 +383,15 @@ const listarProductosRestringido = async (req, res) => {
 			});
 		}
 	}
-	if (gr == "Sin_Lactosa") {
+	if (gr == "Sin Lactosa") {
 		//Hacemos la consulta
 		try {
-			const todosGR = await ProductModel.find({ sin_lactosa: true })
+			const todosGR = await ProductModel.find({ lactosa: true })
 				.sort("_id")
 				.exec();
 
 			//Obtenemos el total de productos
-			let totalGR = await ProductModel.find({ sin_lactosa: true });
+			let totalGR = await ProductModel.find({ lactosa: true });
 
 			if (!todosGR) {
 				return res.status(400).send({
