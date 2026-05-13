@@ -165,7 +165,7 @@ const editarProduct = async (req, res) => {
 			productToEdit,
 			{
 				new: true,
-			}
+			},
 		).exec();
 
 		//Devolvemos la respuesta con un exito o fracaso
@@ -262,7 +262,7 @@ const listarProductosProveedor = async (req, res) => {
 const listarProductosRestringido = async (req, res) => {
 	//Recogemos el restringido del filtro
 	let gr = req.params.name;
-console.log(gr);
+	console.log(gr);
 	if (gr == "Integral") {
 		//Hacemos la consulta
 		try {
@@ -496,6 +496,7 @@ const listarProductosConcreto = async (req, res) => {
 const listarProductosDirigido = async (req, res) => {
 	//Recogemos el dirigido del filtro
 	let dir = req.params.name;
+	console.log({ dir: dir });
 
 	if (dir == "Alimentacion") {
 		//Hacemos la consulta
