@@ -5,7 +5,7 @@
  **********************************************************/
 const mongoose = require("mongoose");
 
-// Prueba de conexion
+// Prueba de conexion2
 
 /*********************METODO QUE CONECTA CON LA BBDD
  **********************************************************/
